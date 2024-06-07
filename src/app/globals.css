@@ -27,6 +27,13 @@ a{
     --softTextColor:#a6a6a6
 }
 
+.dark{
+    --bg:white;
+    --textColor:black;
+    --softBg: #f0f0f0;
+    --softTextColor:#626262
+}
+
 .container{
  min-height: 100vh;
  background-color: var(--bg);
@@ -40,6 +47,8 @@ a{
     padding-left: 80px;
     padding-right: 80px;
 }
+
+
 
 @media screen and (max-width:1536px) {
     .wrapper{

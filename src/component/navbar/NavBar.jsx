@@ -17,9 +17,9 @@ function NavBar() {
       <div className={styles.logo}>NERDYNODE</div>
       <div className={styles.links}>
         <ThemeToggle/>
-        <Link href="./">HomePage</Link>
-        <Link href="./">Contacts</Link>
-        <Link href="./">About</Link>
+        <Link className={styles.link} href="./">HomePage</Link>
+        <Link className={styles.link} href="./">Contacts</Link>
+        <Link className={styles.link} href="./">About</Link>
         <AuthLinks/>
       </div>
 
