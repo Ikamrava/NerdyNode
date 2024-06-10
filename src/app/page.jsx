@@ -5,10 +5,10 @@ import CardList from "@/component/cardList/CardList";
 import Menu from "@/component/menu/Menu";
 
 export default function Home() {
-  return <div className={styles.component}>
+  return <div className={styles.container}>
     <Featured/>
     <CategoryList/>
-    <div className={styles.component}>
+    <div className={styles.content}>
       <CardList/>
       <Menu/>
     </div>

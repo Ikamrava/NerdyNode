@@ -1,11 +1,12 @@
 .container{
-  
+  border-bottom: 2px black solid;
+  padding-bottom: 20px;
 }
 
 .title{
     display: flex;
     flex-direction: column;
-    font-size: 40px;
+    font-size: 25px;
 }
 .discover{
     font-weight: 300;
@@ -32,6 +33,7 @@
 
 .image{
     object-fit: cover;
+    border-radius: 20px;
 }
 
 .postTitle{
