@@ -1,14 +1,14 @@
 .container{
  margin-bottom: 50px;
  display: flex;
- align-items: center;
- gap: 50px;
+ align-items: start;
+ gap: 20px;
  
 }
 
 .imageContainer{
     flex:1;
-    height: 350px;
+    height: 300px;
     position: relative;
 }
 .image{
@@ -20,7 +20,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
+    margin-top: 15px;
+    
+    
+
 }
 
 .date{
