@@ -17,7 +17,7 @@ function CategoryList() {
             JavaScript
           </Link>
 
-          <Link href="/blog?css=style" className={`${styles.category} ${styles.CSS}`}>
+          <Link href="/blog?cat=css" className={`${styles.category} ${styles.CSS}`}>
             <Image src="/css.jpg" alt='' width={124} height={124} className={styles.image}></Image>
             CSS
           </Link>
@@ -32,7 +32,7 @@ function CategoryList() {
             Node.js
           </Link>
 
-          <Link href="/blog?cat=mongo" className={`${styles.category} ${styles.mongoDB}`}>
+          <Link href="/blog?cat=mongodb" className={`${styles.category} ${styles.mongoDB}`}>
             <Image src="/mongo.jpg" alt='' width={124} height={124} className={styles.image}></Image>
             MongoDB
           </Link>

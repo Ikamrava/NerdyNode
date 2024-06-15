@@ -2,17 +2,17 @@
   flex: 2;
   align-items: center;
   justify-content: center;
+  border-left: 3px solid lightgray;
+  padding-left: 15px;
   
 }
 
 .items{
- 
-}
-.item{
+  margin-top: 20px;
+  margin-bottom: 35px;
   display: flex;
-  align-items: center;
-  gap: 5px;
-
+  flex-direction: column;
+  gap: 35px;
 
 }
 
@@ -28,39 +28,4 @@
 
 }
 
-.imageContainer{
-  flex: 1;
-  aspect-ratio: 1/1;
-  position: relative;
-}
 
-.textContainer{
-  flex: 4;
-  text-align: start;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
- 
-  
-}
-.image{
-  border-radius: 50%;
-  border: 3px solid lightgray;
-  object-fit: cover ;
-}
-
-.postTitle{
-  font-size: 18px;
-  font-weight:500;
-  color: var(--softTextColor);
-}
-
-
-.details{
-  font-size: 12px ;
-}
-
-.date{
-  color: gray;
-}

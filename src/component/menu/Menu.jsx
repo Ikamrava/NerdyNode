@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './menu.module.css'
 import Image from 'next/image'
+import Item from './Item'
 
 function Menu() {
   return (
@@ -9,19 +10,10 @@ function Menu() {
       <h1 className={styles.title}>Most Popular</h1>
       
         <div className={styles.items}>
-         <Link href="/" className={styles.item}>
-            <div className={styles.imageContainer}>
-              <Image src="/p1.jpeg" alt="food" fill className={styles.image} />
-            </div>
-            <div className={styles.textContainer}>
-                <span className={`${styles.category} ${styles.react}`}>React</span>
-                  <h3 className={styles.postTitle}>jhsgijqsg klqwhqowh klhqlwkdh</h3>
-                <div lassName={styles.details}>
-                    <span className={styles.userName}>John</span>
-                    <span className={styles.date}> - 10.03.2023</span>
-                </div>
-            </div>
-         </Link>
+          <Item title="React" postTitle="jhsgijqsg klqwhqowh klhq lwkdh" userName="John Doe" date=" -10.03.2023" bgcolor="#ff7857" />
+          <Item title="JavaScript" postTitle="jhsgijqsg klqwhqowh klhq lwkdh" userName="Iman Doe" date=" -10.03.2023" bgcolor="#ffb14f" />
+          <Item title="CSS" postTitle="jhsgijqsg klqwhqowh klhq lwkdh" userName="Reza Doe" date=" -10.03.2023" bgcolor="#7fb881" />
+          <Item title="Mongo DB" postTitle="jhsgijqsg klqwhqowh klhq lwkdh" userName="Hassan Doe" date=" -10.03.2023" bgcolor="#ff7887" />
         </div>
 
       
