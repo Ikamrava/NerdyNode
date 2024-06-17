@@ -16,7 +16,6 @@ console.log(catStyle)
         <span className={styles.category} style={{backgroundColor: bgcolor }} >{title}</span>
           <h3 className={styles.postTitle}>{postTitle}</h3>
         <div lassName={styles.details}>
-            <span className={styles.userName}>{userName}</span>
             <span className={styles.date}>{date}</span>
         </div>
     </div>
