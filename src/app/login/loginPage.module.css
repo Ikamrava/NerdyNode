@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    
+
+}
+
+.wrapper{
+    background-color: var(--softBg);
+    padding: 75px 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    border-radius: 10px;
+    
+}
+
+.socilaGoogle{
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.socilaGoogle{
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ff5555;
+}
+
+.socilaGithub{
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: black;
+}
+
+
+@media screen and (max-width:768px) {
+    .wrapper{
+        padding: 30px;
+        
+        
+    }
+    
+}

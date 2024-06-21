@@ -4,7 +4,7 @@ import styles from './authLinks.module.css'
 import { useState } from 'react'
 
 function AuthLinks() {
-  const status = "notAuth"
+  const status = "Auth"
   const [open,setOpen] = useState(false)
   return (
     <>
@@ -20,7 +20,7 @@ function AuthLinks() {
       <Link href = "/">Home</Link>
       <Link href = "/About">About</Link>
       <Link href = "/Contact">Contact</Link>
-      {status === "notAuth" ? ( <Link href = "/login">Login</Link>) : (<><Link href = "/logout">Write</Link><span className={styles.links}>Logout</span></>)}
+      {status === "notAuth" ? ( <Link href = "/login">Login</Link>) : (<><Link href = "/write">Write</Link><span className={styles.links}>Logout</span></>)}
     </div>}
 
 
