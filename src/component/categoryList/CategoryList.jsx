@@ -1,52 +1,50 @@
+"use client"
 import Link from 'next/link'
 import styles from './categoryList.module.css'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+const getData = async () => {
+  const res = await fetch('http://localhost:3000/api/categories', { cache: "no-store" })
+  if (!res.ok) {
+    throw new Error('Failed')
+  }
+  return res.json()
+}
 
 function CategoryList() {
+  const [data, setData] = useState([])
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData()
+        setData(data)
+      } catch (error) {
+        setError(error.message)
+      }
+    }
+    fetchData()
+  }, [])
+
+  if (error) return <div>Error: {error}</div>
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-          <Link href="/blog?cat=react" className={`${styles.category} ${styles.react}`}>
-            <Image src="/react.jpg" alt='' width={64}
-                height={64} className={styles.image} ></Image>
-            React
+        {data.map((category) => (
+          <Link key={category._id} href={`/${category.slug}`} className={`${styles.category}`}>
+            
+             {category.img && (
+                    <Image src={category.img} alt={category.title} width={64} height={64} className={styles.image} />
+              )}
+              <h4>{category.title}</h4>
+            
           </Link>
-
-          <Link href="/blog?cat=javascript" className={`${styles.category} ${styles.javaScript}`}>
-            <Image src="/javascript.jpg" alt='' width={64}
-                height={64} className={styles.image}></Image>
-            JavaScript
-          </Link>
-
-          <Link href="/blog?cat=css" className={`${styles.category} ${styles.CSS}`}>
-            <Image src="/css.jpg" alt='' width={64}
-                height={64} className={styles.image}></Image>
-            CSS
-          </Link>
-
-          <Link href="/blog?cat=tailwind" className={`${styles.category} ${styles.tailwind}`}>
-            <Image src="/tailwind.jpg" alt='' width={64}
-                height={64} className={styles.image}></Image>
-            Tailwind CSS
-          </Link>
-
-          <Link href="/blog?cat=node" className={`${styles.category} ${styles.node}`}>
-            <Image src="/node.jpg" alt='' width={64}
-                height={64} className={styles.image}></Image>
-            Node.js
-          </Link>
-
-          <Link href="/blog?cat=mongodb" className={`${styles.category} ${styles.mongoDB}`}>
-            <Image src="/mongo.jpg" alt='' width={64}
-                height={64} className={styles.image}></Image>
-            MongoDB
-          </Link>
-
-
-          
+        ))}
       </div>
-      
     </div>
   )
 }
