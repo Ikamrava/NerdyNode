@@ -1,45 +1,28 @@
-datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String          @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
-  is_Admin      Boolean         @default(false)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  Post          Post[]
-  Comment       Comment[]
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.String
+  id_token          String?
   session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -47,39 +30,31 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String   @id @default(cuid()) @map("_id")
   sessionToken String   @unique
-  userId       String   @db.ObjectId
+  userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  Post          Post[]
+  Comment       Comment[]
 }
 
 model VerificationToken {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  identifier String
-  token      String
+  identifier String   @id @map("_id")
+  token      String   @unique
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-// Optional for WebAuthn support
-model Authenticator {
-  credentialID         String  @id @map("_id")
-  userId               String  @db.ObjectId
-  providerAccountId    String
-  credentialPublicKey  String
-  counter              Int
-  credentialDeviceType String
-  credentialBackedUp   Boolean
-  transports           String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, credentialID])
 }
 
 model Category {
@@ -90,29 +65,27 @@ model Category {
   Posts Post[]
 }
 
-
 model Post {
-  id        String   @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now())
-  slug      String   @unique
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  slug      String    @unique
   title     String
   desc      String
   img       String?
-  views     Int      @default(0)
+  views     Int       @default(0)
   catSlug   String
-  cat       Category @relation(fields: [catSlug], references: [slug])
+  cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
-  user      User     @relation(fields: [userEmail], references: [email])
-  comments Comment[]
+  user      User      @relation(fields: [userEmail], references: [email])
+  comments  Comment[]
 }
 
 model Comment {
-  id        String @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
   desc      String
   userEmail String
-  user      User   @relation(fields: [userEmail], references: [email])
-  postSlug String
-  post Post @relation(fields: [postSlug],references: [slug])
-
+  user      User     @relation(fields: [userEmail], references: [email])
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug])
 }
