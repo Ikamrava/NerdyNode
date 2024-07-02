@@ -35,7 +35,7 @@ function CategoryList() {
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
         {data.map((category) => (
-          <Link key={category._id} href={`/${category.slug}`} className={`${styles.category}`}>
+          <Link key={category._id} href={`/blog?cat=${category.slug}`} className={`${styles.category}`}>
             
              {category.img && (
                     <Image src={category.img} alt={category.title} width={64} height={64} className={styles.image} />

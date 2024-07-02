@@ -55,7 +55,7 @@
   }
   
   .input::placeholder{
-    color: #b3b3b1;
+    color: var(--textColor);
   }
   .textArea::placeholder{
     color: #b3b3b1;
